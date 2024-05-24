@@ -17,5 +17,10 @@ public class singleplayer extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+        prepare();
+    }
+    
+    public void prepare() {
+        showText("Create groups of four by words that are related.", 300, 30); 
     }
 }
