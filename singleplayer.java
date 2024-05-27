@@ -26,15 +26,20 @@ public class singleplayer extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         prepare();
+        int xspace = 75;
+        int yspace = 100;
         
         for (int i=0; i<groups.length; i++) {
             for (int j=1; j<groups[i].length; j++) {
                 word newWord = new word(groups[i][j]);
-                addObject(newWord, 0, 0);
+                addObject(newWord, xspace, yspace);
+                xspace += 150;
             }
+            xspace = 75;
+            yspace += 75;
         }
     }
-    
+  
     public void prepare() {
         showText("Create groups of four by words that are related.", 300, 30); 
     }
@@ -43,7 +48,7 @@ public class singleplayer extends World
         
     }
     
-    public void addToGuess() {
+    public void addToGuess(word clicked) {
         
     }
 }
