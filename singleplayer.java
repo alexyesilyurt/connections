@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class singleplayer extends World
 {
     private static final int guessLength = 4;
+    private ArrayList<String> guessList = new ArrayList<>();
     
     private String[][] groups = {{"TAKE ADVANTAGE OF", "EXPLOIT", "LEVERAGE", "MILK", "USE"},
                                 {"FINISHED, AS TIME", "DONE", "OVER", "THROUGH", "UP"},
@@ -44,11 +45,32 @@ public class singleplayer extends World
         showText("Create groups of four by words that are related.", 300, 30); 
     }
     
-    public void setCoordinates() {
-        
+    public void addToGuess(word clicked) {
+        if (guessList.size() < 4) {
+            guessList.add(clicked.s);
+        }
+        if (guessList.size() == 4) {
+            check();
+        }
     }
     
-    public void addToGuess(word clicked) {
-        
+    public void removeFromGuess(word clicked) {
+        guessList.remove(clicked.s);
+    }
+    
+    public void check() {
+        int counter = 0;
+        for (int i=0; i<groups.length; i++) {
+            for (int j=1; j<groups[i].length; j++) {
+                if (guessList.contains(groups[i][j])) {
+                    counter++;
+                    if (counter == 4) {
+                        showText("Great job! You got a group!", 300, 200); 
+                        guessList = new ArrayList<>();
+                    }
+                }
+            }
+            counter = 0;
+        }
     }
 }

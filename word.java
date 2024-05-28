@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class word extends Actor
 {
-    private String s;
+    public String s;
     Color color = Color.BLUE;
     
     public word(String s) {
@@ -33,14 +33,16 @@ public class word extends Actor
                 GreenfootImage image = new GreenfootImage(this.s, 35, Color.BLACK, Color.BLUE);
                 setImage(image);
                 this.color = Color.BLUE;
+                ((singleplayer)getWorld()).removeFromGuess(this);
             }
             else {
                 GreenfootImage image = new GreenfootImage(this.s, 35, Color.BLACK, Color.RED);
                 setImage(image);
                 this.color = Color.RED;
+                ((singleplayer)getWorld()).addToGuess(this);
             }
         }
-        ((singleplayer)getWorld()).addToGuess(this);
+        
     }
         
 }
