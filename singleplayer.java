@@ -29,6 +29,7 @@ public class singleplayer extends World
         prepare();
         int xspace = 75;
         int yspace = 100;
+        String hello;
         
         for (int i=0; i<groups.length; i++) {
             for (int j=1; j<groups[i].length; j++) {
